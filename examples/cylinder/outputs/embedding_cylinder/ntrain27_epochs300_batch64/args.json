@@ -1,0 +1,23 @@
+{
+    "exp_dir": "./outputs",
+    "exp_name": "cylinder",
+    "training_h5_file": "/mnt/c/Users/yzeng/Codes/transformer-physx/examples/cylinder/data/cylinder_train.hdf5",
+    "eval_h5_file": "/mnt/c/Users/yzeng/Codes/transformer-physx/examples/cylinder/data/cylinder_valid.hdf5",
+    "n_train": 27,
+    "n_eval": 6,
+    "stride": 16,
+    "block_size": 4,
+    "batch_size": 64,
+    "epoch_start": 0,
+    "epochs": 300,
+    "lr": 0.001,
+    "seed": 12345,
+    "n_gpu": 1,
+    "plot_freq": 25,
+    "test_freq": 5,
+    "save_steps": 25,
+    "notes": "",
+    "run_dir": "/mnt/c/Users/yzeng/Codes/transformer-physx/examples/cylinder/./outputs/embedding_cylinder/ntrain27_epochs300_batch64",
+    "ckpt_dir": "/mnt/c/Users/yzeng/Codes/transformer-physx/examples/cylinder/./outputs/embedding_cylinder/ntrain27_epochs300_batch64/checkpoints",
+    "plot_dir": "/mnt/c/Users/yzeng/Codes/transformer-physx/examples/cylinder/./outputs/embedding_cylinder/ntrain27_epochs300_batch64/predictions"
+}

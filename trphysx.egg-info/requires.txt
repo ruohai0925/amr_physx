@@ -1,0 +1,5 @@
+filelock>=3.0.0
+h5py>=2.9.0
+matplotlib>=3.0.0
+numpy>=1.15.0
+torch>=1.7.0
