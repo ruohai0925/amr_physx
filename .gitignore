@@ -157,3 +157,13 @@ trphysx.egg-info/
 _site/
 .sass-cache/
 
+trphysx/config/__pycache__/
+trphysx/data_utils/__pycache__/
+trphysx/embedding/__pycache__/
+trphysx/embedding/training/__pycache__/
+trphysx/__pycache__/
+trphysx/config/configuration_auto.py
+trphysx/embedding/training/enn_data_handler.py
+trphysx/transformer/__pycache__/
+trphysx/utils/__pycache__/
+trphysx/viz/__pycache__/
