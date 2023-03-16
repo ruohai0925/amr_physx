@@ -13,6 +13,7 @@ github: https://github.com/zabaras/transformer-physx
 import sys
 import logging
 import torch
+import time
 from torch.optim.lr_scheduler import ExponentialLR
 
 from trphysx.config.configuration_auto import AutoPhysConfig
@@ -23,6 +24,8 @@ from trphysx.embedding.training import *
 logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
+
+    start_time = time.time()
 
     sys.argv = sys.argv + ["--exp_name", "cylinder"]
     # sys.argv = sys.argv + ["--training_h5_file", "./data/cylinder_training.hdf5"]
@@ -85,3 +88,8 @@ if __name__ == '__main__':
 
     trainer = EmbeddingTrainer(model, args, (optimizer, scheduler), viz)
     trainer.train(training_loader, testing_loader)
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time: {elapsed_time} seconds.")
+
