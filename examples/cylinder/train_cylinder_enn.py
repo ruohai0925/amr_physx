@@ -33,6 +33,7 @@ if __name__ == '__main__':
     sys.argv = sys.argv + ["--block_size", "4"]
     sys.argv = sys.argv + ["--n_train", "27"]
     sys.argv = sys.argv + ["--n_eval", "6"]
+    sys.argv = sys.argv + ["--epochs", "100"]
 
     # Setup logging
     logging.basicConfig(
