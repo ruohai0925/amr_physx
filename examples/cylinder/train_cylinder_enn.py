@@ -26,9 +26,9 @@ if __name__ == '__main__':
 
     sys.argv = sys.argv + ["--exp_name", "cylinder"]
     # sys.argv = sys.argv + ["--training_h5_file", "./data/cylinder_training.hdf5"]
-    sys.argv = sys.argv + ["--training_h5_file", "/mnt/c/Users/yzeng/Codes/amr_physx/examples/cylinder/data/cylinder_train.hdf5"]
+    sys.argv = sys.argv + ["--training_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_train.hdf5"]
     # sys.argv = sys.argv + ["--eval_h5_file", "/data/cylinder_valid.hdf5"]
-    sys.argv = sys.argv + ["--eval_h5_file", "/mnt/c/Users/yzeng/Codes/amr_physx/examples/cylinder/data/cylinder_valid.hdf5"]
+    sys.argv = sys.argv + ["--eval_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_valid.hdf5"]
     sys.argv = sys.argv + ["--batch_size", "64"]
     sys.argv = sys.argv + ["--block_size", "4"]
     sys.argv = sys.argv + ["--n_train", "27"]
@@ -46,6 +46,8 @@ if __name__ == '__main__':
     args.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("args.device ", args.device)
     logger.info("Torch device: {}".format(args.device))
+    print(torch.cuda.get_arch_list())
+    print(torch.version.cuda)
 
     # Load transformer config file
     config = AutoPhysConfig.load_config(args.exp_name)
