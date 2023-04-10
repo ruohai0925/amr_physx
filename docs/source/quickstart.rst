@@ -18,21 +18,9 @@ Current Collab Notebooks
      - Training Embedding
      - Training Transformer
      - Built-in
-   * - Lorenz
-     - `Open <https://colab.research.google.com/github/zabaras/transformer-physx/blob/main/examples/lorenz/train_lorenz_enn.ipynb>`__
-     - `Open <https://colab.research.google.com/github/zabaras/transformer-physx/blob/main/examples/lorenz/train_lorenz_transformer.ipynb>`__
-     - True
-   * - Rossler
-     - `Open <https://colab.research.google.com/github/zabaras/transformer-physx/blob/main/examples/rossler/train_rossler_enn.ipynb>`__
-     - `Open <https://colab.research.google.com/github/zabaras/transformer-physx/blob/main/examples/rossler/train_rossler_transformer.ipynb>`__
-     - False
    * - Cylinder
      - `Open <https://colab.research.google.com/github/zabaras/transformer-physx/blob/main/examples/cylinder/train_cylinder_enn.ipynb>`__
      - `Open <https://colab.research.google.com/github/zabaras/transformer-physx/blob/main/examples/cylinder/train_cylinder_transformer.ipynb>`__
-     - True
-   * - Gray-Scott
-     - Not available
-     - Coming Soon
      - True
 
 Example Information
