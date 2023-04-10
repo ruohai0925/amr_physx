@@ -17,22 +17,6 @@ trphysx.viz.viz\_cylinder
    :undoc-members:
    :show-inheritance:
 
-trphysx.viz.viz\_grayscott
---------------------------
-
-.. automodule:: trphysx.viz.viz_grayscott
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-trphysx.viz.viz\_lorenz
------------------------
-
-.. automodule:: trphysx.viz.viz_lorenz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 trphysx.viz.viz\_model
 ----------------------
 

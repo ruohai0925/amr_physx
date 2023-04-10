@@ -12,16 +12,12 @@ import json
 import logging
 from collections import OrderedDict
 from typing import Dict
-from .configuration_lorenz import LorenzConfig
 from .configuration_cylinder import CylinderConfig
-from .configuration_grayscott import GrayScottConfig
 from .configuration_phys import PhysConfig
 
 CONFIG_MAPPING = OrderedDict(
     [
-        ("lorenz", LorenzConfig),
         ("cylinder", CylinderConfig),
-        ("grayscott", GrayScottConfig)
     ]
 )
 CONFIG_NAME = "config_trphysx.json"
@@ -42,7 +38,7 @@ class AutoPhysConfig:
     @classmethod
     def load_config(cls, model_name_or_path, **kwargs) -> PhysConfig:
         """Creates a configuration object for a transformer model.
-        Predefined configs currently support: "lorenz", "cylinder", "grayscott"
+        Predefined configs currently support: "cylinder"
 
         Args:
             model_name_or_path (str): Name of model or path to save config JSON file

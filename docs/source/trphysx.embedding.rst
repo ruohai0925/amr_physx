@@ -25,22 +25,6 @@ trphysx.embedding.embedding\_cylinder
    :undoc-members:
    :show-inheritance:
 
-trphysx.embedding.embedding\_grayscott
---------------------------------------
-
-.. automodule:: trphysx.embedding.embedding_grayscott
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-trphysx.embedding.embedding\_lorenz
------------------------------------
-
-.. automodule:: trphysx.embedding.embedding_lorenz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 trphysx.embedding.embedding\_model
 ----------------------------------
 

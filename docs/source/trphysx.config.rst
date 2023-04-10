@@ -33,22 +33,6 @@ trphysx.config.configuration\_cylinder
    :undoc-members:
    :show-inheritance:
 
-trphysx.config.configuration\_grayscott
----------------------------------------
-
-.. automodule:: trphysx.config.configuration_grayscott
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-trphysx.config.configuration\_lorenz
-------------------------------------
-
-.. automodule:: trphysx.config.configuration_lorenz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 trphysx.config.configuration\_phys
 ----------------------------------
 

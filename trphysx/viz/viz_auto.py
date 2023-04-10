@@ -8,16 +8,12 @@ github: https://github.com/zabaras/transformer-physx
 =====
 """
 from collections import OrderedDict
-from .viz_lorenz import LorenzViz
 from .viz_cylinder import CylinderViz
-from .viz_grayscott import GrayScottViz
 from .viz_model import Viz
 
 VIZ_MAPPING = OrderedDict(
     [
-        ("lorenz", LorenzViz),
         ("cylinder", CylinderViz),
-        ("grayscott", GrayScottViz),
     ]
 )
 
@@ -35,7 +31,7 @@ class AutoViz():
     @classmethod
     def load_viz(cls, viz_name: str, *args, **kwargs) -> Viz:
         """Loads built in visualization class.
-        Currently supports: "lorenz", "cylinder", "grayscott"
+        Currently supports: "cylinder"
 
         Args:
             viz_name (str): Keyword/name of visualization class

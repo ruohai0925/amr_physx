@@ -25,22 +25,6 @@ trphysx.data\_utils.dataset\_cylinder
    :undoc-members:
    :show-inheritance:
 
-trphysx.data\_utils.dataset\_grayscott
---------------------------------------
-
-.. automodule:: trphysx.data_utils.dataset_grayscott
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-trphysx.data\_utils.dataset\_lorenz
------------------------------------
-
-.. automodule:: trphysx.data_utils.dataset_lorenz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 trphysx.data\_utils.dataset\_phys
 ---------------------------------
 

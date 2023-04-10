@@ -22,7 +22,7 @@ class EmbeddingParser(argparse.ArgumentParser):
     def __init__(self):
         super().__init__(description='Arguments for training the embedding models for transformers of physical systems')
         self.add_argument('--exp_dir', type=str, default="./outputs", help='directory to save experiments')
-        self.add_argument('--exp_name', type=str, default="lorenz", help='experiment name')
+        self.add_argument('--exp_name', type=str, default="cylinder", help='experiment name')
 
         # data
         self.add_argument('--training_h5_file', type=str, default=None, help='file path to the training data hdf5 file')

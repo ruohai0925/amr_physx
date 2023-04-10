@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from typing import Optional, Tuple #Needs python 3.8 for literal
 
 HOME = os.getcwd()
-INITS = ['lorenz', 'cylinder', 'grayscott']
+INITS = ['cylinder']
 logger = logging.getLogger(__name__)
 
 @dataclass
@@ -23,7 +23,7 @@ class ModelArguments:
     Arguments pertaining to which model/config/tokenizer we are going to fine-tune, or train from scratch.
     """
     init_name: str = field(
-        default='lorenz', metadata={"help": "Used as a global default initialization token for different experiments."}
+        default='cylinder', metadata={"help": "Used as a global default initialization token for different experiments."}
     )
     model_name: str = field(
         default=None, metadata={"help": "The name model of the transformer model"},

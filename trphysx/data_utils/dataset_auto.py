@@ -8,16 +8,12 @@ github: https://github.com/zabaras/transformer-physx
 =====
 """
 from collections import OrderedDict
-from .dataset_lorenz import LorenzDataset
 from .dataset_cylinder import CylinderDataset
-from .dataset_grayscott import GrayscottDataset
 from .dataset_phys import PhysicalDataset
 
 DATASET_MAPPING = OrderedDict(
         [
-            ("lorenz", LorenzDataset),
             ("cylinder", CylinderDataset),
-            ("grayscott", GrayscottDataset),
         ]
     )
 
@@ -35,7 +31,7 @@ class AutoDataset():
     @classmethod
     def create_dataset(cls, dataset_name: str, *args, **kwargs) -> PhysicalDataset:
         """Creates a data-set for testing or validation
-        Currently supports: "lorenz", "cylinder", "grayscott"
+        Currently supports: "cylinder"
 
         Args:
             dataset_name (str): Keyword/name of the data-set needed

@@ -11,24 +11,18 @@ import logging
 from typing import Optional
 from collections import OrderedDict
 from .embedding_model import EmbeddingModel, EmbeddingTrainingHead
-from .embedding_lorenz import LorenzEmbedding, LorenzEmbeddingTrainer
 from .embedding_cylinder import CylinderEmbedding, CylinderEmbeddingTrainer
-from .embedding_grayscott import GrayScottEmbedding, GrayScottEmbeddingTrainer
 from trphysx.config.configuration_phys import PhysConfig
 
 MODEL_MAPPING = OrderedDict(
     [
-        ("lorenz", LorenzEmbedding),
-        ("cylinder", CylinderEmbedding),
-        ("grayscott", GrayScottEmbedding)
+        ("cylinder", CylinderEmbedding)
     ]
 )
 
 TRAINING_MAPPING = OrderedDict(
     [
-        ("lorenz", LorenzEmbeddingTrainer),
-        ("cylinder", CylinderEmbeddingTrainer),
-        ("grayscott", GrayScottEmbeddingTrainer)
+        ("cylinder", CylinderEmbeddingTrainer)
     ]
 )
 
@@ -48,7 +42,7 @@ class AutoEmbeddingModel:
     @classmethod
     def init_model(cls, model_name: str, config: PhysConfig) -> EmbeddingModel:
         """Initialize embedding model.
-        Currently supports: "lorenz", "cylinder", "grayscott"
+        Currently supports: "cylinder"
 
         Args:
             model_name (str): Keyword/name of embedding model
@@ -74,7 +68,7 @@ class AutoEmbeddingModel:
     @classmethod
     def init_trainer(cls, model_name: str, config: PhysConfig) -> EmbeddingTrainingHead:
         """Initialize embedding model with a training head.
-        Currently supports: "lorenz", "cylinder", "grayscott"
+        Currently supports: "cylinder"
 
         Args:
             model_name (str): Keyword/name of embedding model
@@ -100,7 +94,7 @@ class AutoEmbeddingModel:
     @classmethod
     def load_model(cls, model_name: str, config: PhysConfig, file_or_path_directory: Optional[str]=None, epoch: int=0) -> EmbeddingModel:
         """Initialize and load embedding model from memory.
-        Currently supports: "lorenz", "cylinder", "grayscott"
+        Currently supports: "cylinder"
 
         Args:
             model_name (str): Keyword/name of embedding model
