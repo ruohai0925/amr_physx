@@ -139,7 +139,7 @@ dmypy.json
 # Output files
 *.json
 *.bin
-*.png
+#*.png
 *.pdf
 *.pth
 *.mp4
