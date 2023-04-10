@@ -32,11 +32,11 @@ if __name__ == '__main__':
     sys.argv = sys.argv + ["--training_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_train.hdf5"]
     # sys.argv = sys.argv + ["--eval_h5_file", "/data/cylinder_valid.hdf5"]
     sys.argv = sys.argv + ["--eval_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_valid.hdf5"]
-    sys.argv = sys.argv + ["--batch_size", "64"]
+    sys.argv = sys.argv + ["--batch_size", "6"]
     sys.argv = sys.argv + ["--block_size", "4"]
     sys.argv = sys.argv + ["--n_train", "27"]
     sys.argv = sys.argv + ["--n_eval", "6"]
-    sys.argv = sys.argv + ["--epochs", "100"]
+    sys.argv = sys.argv + ["--epochs", "50"]
 
     # Setup logging
     logging.basicConfig(
