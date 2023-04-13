@@ -28,10 +28,10 @@ if __name__ == '__main__':
     start_time = time.time()
 
     sys.argv = sys.argv + ["--exp_name", "cylinder"]
-    # sys.argv = sys.argv + ["--training_h5_file", "./data/cylinder_training.hdf5"]
-    sys.argv = sys.argv + ["--training_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_train.hdf5"]
-    # sys.argv = sys.argv + ["--eval_h5_file", "/data/cylinder_valid.hdf5"]
-    sys.argv = sys.argv + ["--eval_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_valid.hdf5"]
+    sys.argv = sys.argv + ["--training_h5_file", "/mnt/c/Users/yzeng/Codes/amr_physx/examples/cylinder/data/cylinder_training.hdf5"]
+    # sys.argv = sys.argv + ["--training_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_train.hdf5"]
+    sys.argv = sys.argv + ["--eval_h5_file", "/mnt/c/Users/yzeng/Codes/amr_physx/examples/cylinder/data/cylinder_valid.hdf5"]
+    # sys.argv = sys.argv + ["--eval_h5_file", "/scratch1/jordan/amr_physx/examples/cylinder/data/cylinder_valid.hdf5"]
     sys.argv = sys.argv + ["--batch_size", "6"]
     sys.argv = sys.argv + ["--block_size", "4"]
     sys.argv = sys.argv + ["--n_train", "27"]
@@ -56,7 +56,6 @@ if __name__ == '__main__':
     # Load transformer config file
     config = AutoPhysConfig.load_config(args.exp_name)
     data_handler = AutoDataHandler.load_data_handler(args.exp_name)
-    viz = AutoViz.load_viz(args.exp_name, plot_dir=args.plot_dir)
 
      # Set up data-loaders
     training_loader = data_handler.createTrainingLoader(
@@ -86,6 +85,7 @@ if __name__ == '__main__':
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr*0.995**(args.epoch_start-1), weight_decay=1e-8)
     scheduler = ExponentialLR(optimizer, gamma=0.995)
 
+    viz = AutoViz.load_viz(args.exp_name, plot_dir=args.plot_dir)
     trainer = EmbeddingTrainer(model, args, (optimizer, scheduler), viz)
     trainer.train(training_loader, testing_loader)
 

@@ -63,7 +63,7 @@ class CylinderDataHandler(EmbeddingDataHandler):
             examples (List): list of training/testing example flow fields
             visc (List): list of training/testing example viscosities
         """
-        # It seems ok if both types of examples and visc are torch.tensor......
+        # Jordan: it seems ok if both types of examples and visc are torch.tensor ......
         def __init__(self, examples: List, visc: List) -> None:
             """Constructor
             """
@@ -89,6 +89,9 @@ class CylinderDataHandler(EmbeddingDataHandler):
             # Stack examples in mini-batch
             x_data_tensor =  torch.stack([example["states"] for example in examples])
             visc_tensor =  torch.stack([example["viscosity"] for example in examples])
+
+            print("x_data_tensor.size ", x_data_tensor.size())
+            print("visc_tensor.size ", visc_tensor.size())
 
             return {"states": x_data_tensor, "viscosity": visc_tensor}
 
@@ -159,7 +162,7 @@ class CylinderDataHandler(EmbeddingDataHandler):
                 # stride  16
 
 
-                for i in range(0, data_series.size(0) - block_size + 1, stride):  # Truncate in block of block_size
+                for i in range(0, data_series.size(0) - block_size + 1, stride):  # Truncate in block of block_size, (0, 388, 16)
                     examples.append(data_series[i: i + block_size])
                     visc.append(torch.tensor([visc0]))
                 #     print("i ", i, " len of examples ", len(examples), " len of visc ", len(visc), 'size of data_series[i: i + block_size] ', data_series[i: i + block_size].size())
@@ -169,7 +172,7 @@ class CylinderDataHandler(EmbeddingDataHandler):
                 #     exit()
 
                 samples = samples + 1
-                # print("samples ", samples)
+                # print("samples ", samples) # 25
                 # print(" ")
                 if (ndata > 0 and samples > ndata):  # If we have enough time-series samples break loop
                     break
@@ -179,7 +182,7 @@ class CylinderDataHandler(EmbeddingDataHandler):
         # print("torch.tensor(visc) ", torch.tensor(visc))
         # print("torch.tensor(visc).size ", torch.tensor(visc).size()) # torch.Size([675])
 
-        data = torch.stack(examples, dim=0) # data.size()  torch.Size([675, 4, 3, 64, 128])
+        data = torch.stack(examples, dim=0) # data.size()  torch.Size([675=25*27, 4, 3, 64, 128])
         # calculate the mean and std of u, v, p, and mu
         self.mu = torch.tensor([torch.mean(data[:,:,0]), torch.mean(data[:,:,1]), torch.mean(data[:,:,2]), torch.mean(torch.tensor(visc))]) #  torch.Size([4])
         self.std = torch.tensor([torch.std(data[:,:,0]), torch.std(data[:,:,1]), torch.std(data[:,:,2]), torch.std(torch.tensor(visc))]) #  torch.Size([4])
@@ -193,7 +196,7 @@ class CylinderDataHandler(EmbeddingDataHandler):
             batch_size = data.size(0)
 
         # print(type(data), type(torch.stack(visc, dim=0))) # <class 'torch.Tensor'> <class 'torch.Tensor'>
-        dataset = self.CylinderDataset(data, torch.stack(visc, dim=0))
+        dataset = self.CylinderDataset(data, torch.stack(visc, dim=0)) # data includes u, v, and p. The second input is viscosity.
         # print("torch.stack(visc, dim=0).size ", torch.stack(visc, dim=0).size()) # torch.Size([675, 1])
         # print("torch.stack(visc, dim=1).size ", torch.stack(visc, dim=1).size()) # torch.Size([1, 675])
         # exit()
@@ -271,7 +274,7 @@ class AutoDataHandler():
     @classmethod
     def load_data_handler(cls, model_name: str, **kwargs) -> EmbeddingDataHandler:
         """Gets built-in data handler.
-        Currently supports: "lorenz", "cylinder", "grayscott"
+        Currently supports: "cylinder"
 
         Args:
             model_name (str): Model name
