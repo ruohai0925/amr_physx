@@ -90,8 +90,10 @@ class CylinderDataHandler(EmbeddingDataHandler):
             x_data_tensor =  torch.stack([example["states"] for example in examples])
             visc_tensor =  torch.stack([example["viscosity"] for example in examples])
 
-            print("x_data_tensor.size ", x_data_tensor.size())
-            print("visc_tensor.size ", visc_tensor.size())
+            # print("len ", len(examples)) # 6, is the batch size
+            # print("x_data_tensor.size ", x_data_tensor.size()) # x_data_tensor.size  torch.Size([6, 4, 3, 64, 128])
+            # print("visc_tensor.size ", visc_tensor.size()) # visc_tensor.size  torch.Size([6, 1])
+            # exit()
 
             return {"states": x_data_tensor, "viscosity": visc_tensor}
 
