@@ -64,6 +64,7 @@ if __name__ == '__main__':
                         stride=args.stride, 
                         ndata=args.n_train, 
                         batch_size=args.batch_size)
+
     testing_loader = data_handler.createTestingLoader(
                         args.eval_h5_file, 
                         block_size=32, 
@@ -79,6 +80,8 @@ if __name__ == '__main__':
     mu, std = data_handler.norm_params
     model.embedding_model.mu = mu.to(args.device)
     model.embedding_model.std = std.to(args.device)
+
+    # restart
     if args.epoch_start > 1:
         model.load_model(args.ckpt_dir, args.epoch_start)
 

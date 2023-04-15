@@ -185,7 +185,8 @@ class CylinderDataHandler(EmbeddingDataHandler):
         # print("torch.tensor(visc).size ", torch.tensor(visc).size()) # torch.Size([675])
 
         data = torch.stack(examples, dim=0) # data.size()  torch.Size([675=25*27, 4, 3, 64, 128])
-        # calculate the mean and std of u, v, p, and mu
+        
+        # calculate the mean and std of u, v, p, and mu for all training data
         self.mu = torch.tensor([torch.mean(data[:,:,0]), torch.mean(data[:,:,1]), torch.mean(data[:,:,2]), torch.mean(torch.tensor(visc))]) #  torch.Size([4])
         self.std = torch.tensor([torch.std(data[:,:,0]), torch.std(data[:,:,1]), torch.std(data[:,:,2]), torch.std(torch.tensor(visc))]) #  torch.Size([4])
 

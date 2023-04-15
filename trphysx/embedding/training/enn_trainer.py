@@ -88,6 +88,9 @@ class EmbeddingTrainer:
             loss_total = 0.0
             loss_reconstruct = 0.0
             self.model.zero_grad()
+
+            # The loop variable mbidx represents the current batch index, starting from 0, 
+            # and the loop variable inputs represents the current batch of data.
             for mbidx, inputs in enumerate(training_loader):
 
                 loss0, loss_reconstruct0 = self.model(**inputs)
@@ -95,14 +98,39 @@ class EmbeddingTrainer:
 
                 loss_reconstruct = loss_reconstruct + loss_reconstruct0.sum()
                 loss_total = loss_total + loss0.detach()
+                
                 # Backwards!
                 loss0.backward()
+
+                # The clip_grad_norm_() function clips the norm of the gradients to a maximum value, 
+                # specified as an argument to the function. If the norm of the gradients exceeds this value, 
+                # the gradients are rescaled so that their norm equals the maximum value, effectively limiting the maximum update that can be made to the model parameters.
+
+                # The function is typically called after calling loss.backward() to compute the gradients, 
+                # and before calling optimizer.step() to update the model parameters. 
+                # The clip_grad_norm_() function operates on the model parameters, which are accessed via self.model.parameters().
+
                 torch.nn.utils.clip_grad_norm_(self.model.parameters(), 0.1)
+
+                # In PyTorch, optimizer.step() is a method that is used to update the model parameters 
+                # based on the computed gradients. During training, the optimizer adjusts the model parameters 
+                # in the direction of the negative gradient of the loss function, 
+                # with the magnitude of the adjustment determined by the learning rate and the size of the gradient.
+
                 optimizer.step()
+
+                # The zero_grad() method can be called on either the model itself or on the optimizer that is used to update the model parameters. 
+                # In most cases, calling optimizer.zero_grad() 
+                # is equivalent to calling self.model.zero_grad(), 
+                # since the optimizer typically holds a reference to the model's parameters.
                 optimizer.zero_grad()
 
                 if mbidx+1 % 10 == 0:
                     logger.info('Epoch {:d}: Completed mini-batch {}/{}.'.format(epoch, mbidx+1, len(training_loader)))
+
+            # In PyTorch, lr_scheduler.step() is a method that is used to update the learning rate of the optimizer during training. 
+            # After training for a certain number of iterations or epochs, 
+            # we typically call lr_scheduler.step() to update the learning rate based on the scheduler's strategy. 
 
             # Progress learning rate scheduler
             lr_scheduler.step()
